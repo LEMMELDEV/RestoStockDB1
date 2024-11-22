@@ -1,11 +1,11 @@
 ﻿@page
-@model RestoStockDB.Pages.Proovedores.IndexModel
+@model RestoStockDB1.Pages.Proovedores.IndexModel
 
 @{
     ViewData["Title"] = "Index Proovedores";
 }
 
-<h1>PROOVEDORES</h1>
+<h1>PROVEEDORES</h1>
 
 <p>
     <a asp-page="Create" class="btn btn-success">CREAR NUEVO</a>
@@ -18,19 +18,18 @@
                 @Html.DisplayNameFor(model => model.Proovedores[0].NombreEmpresa)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Proovedores[0].Contacto)  
+                @Html.DisplayNameFor(model => model.Proovedores[0].Contacto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Proovedores[0].Telefono)  
+                @Html.DisplayNameFor(model => model.Proovedores[0].Telefono)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Proovedores[0].Email)  
+                @Html.DisplayNameFor(model => model.Proovedores[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Proovedores[0].Direccion)  
+                @Html.DisplayNameFor(model => model.Proovedores[0].Direccion)
             </th>
             <th>Actions</th>
-
         </tr>
     </thead>
     <tbody>
@@ -41,27 +40,20 @@
                     @Html.DisplayFor(modelItem => item.NombreEmpresa)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Contacto)  
-
+                    @Html.DisplayFor(modelItem => item.Contacto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Telefono)  
-
+                    @Html.DisplayFor(modelItem => item.Telefono)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)  
-
+                    @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Direccion)  
-
+                    @Html.DisplayFor(modelItem => item.Direccion)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ProovedorId" class="btn btn-danger">Editar</a>
+                    <a asp-page="./Edit" asp-route-id="@item.ProovedorId" class="btn btn-warning">Editar</a>
                     <a asp-page="./Delete" asp-route-id="@item.ProovedorId" class="btn btn-danger">Eliminar</a>
-                </td>
-                <td>
-                    <span></span>
                 </td>
             </tr>
         }

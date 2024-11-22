@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using RestoStockDB1.Data;
 using RestoStockDB1.Models;
+using RestoStockDB1.Data;
 
-namespace Proovedores
+namespace RestoStockDB1.Pages.Proovedores
 {
     //[Authorize]
     public class IndexModel : PageModel
@@ -28,4 +28,3 @@ namespace Proovedores
         }
     }
 }
-

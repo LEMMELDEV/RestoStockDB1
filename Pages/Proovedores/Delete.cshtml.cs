@@ -1,10 +1,10 @@
+using RestoStockDB1.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using RestoStockDB1.Data;
 using RestoStockDB1.Models;
 
-namespace Proovedores
+namespace RestoStockDB1.Pages.Proovedores
 {
     public class DeleteModel : PageModel
     {
@@ -15,7 +15,6 @@ namespace Proovedores
         }
         [BindProperty]
         public Proovedor Proovedor { get; set; } = default!;
-
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Proovedores == null)
@@ -29,33 +28,31 @@ namespace Proovedores
             }
             else
             {
-                Proovedor = proovedores;
+                proovedores = proovedores;
                 return Page();
             }
         }
-
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            // Verifica si el id es nulo o si el contexto de proovedores es nulo.
+            // Verifica si el id es nulo o si el contexto de proveedores es nulo.
             if (id == null || _context.Proovedores == null)
             {
                 // Si alguna de las condiciones anteriores es verdadera, se devuelve un error 404 (Not Found).
                 return NotFound();
             }
-            // Busca el Proovedor con el id proporcionado de forma asíncrona.
+            // Busca el Proveedor con el id proporcionado de forma asíncrona.
             var proovedores = await _context.Proovedores.FindAsync(id);
-            // Si el Proovedor no se encuentra, se devuelve un error 404.
+            // Si el Proveedor no se encuentra, se devuelve un error 404.
             if (proovedores == null)
             {
                 return NotFound();
             }
-            // Si se encuentra el Proovedor, se procede a eliminarlo.
-            Proovedor = proovedores; // Asigna el Proovedor encontrado a la propiedad Proovedor.
-            _context.Proovedores.Remove(Proovedor); // Elimina el Proovedor del contexto.
+            // Si se encuentra el Proveedor, se procede a eliminarlo.
+            Proovedor = proovedores; // Asigna el Proveedor encontrado a la propiedad Proveedores.
+            _context.Proovedores.Remove(Proovedor); // Elimina el Proveedor del contexto.
             await _context.SaveChangesAsync(); // Guarda los cambios en la base de datos de forma asíncrona.
-            // Redirige a la página de índice después de eliminar el Proovedor.
+            // Redirige a la página de índice después de eliminar el Proveedor.
             return RedirectToPage("./Index");
         }
     }
 }
-
