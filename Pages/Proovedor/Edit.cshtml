@@ -1,0 +1,50 @@
+﻿@page
+@model RestoStockDB.Pages.Proovedores.EditModel
+@{
+    ViewData["Title"] = "EDITAR PROOVEDOR";
+}
+<h1>Editar</h1>
+<h4>Proovedor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Proovedor.ProovedorId" />
+            <div class="form-group">
+                <label asp-for="Proovedor.NombreEmpresa" class="control-label"></label>
+                <input asp-for="Proovedor.NombreEmpresa" class="form-control" />
+                <span asp-validation-for="Proovedor.NombreEmpresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proovedor.Contacto" class="control-label"></label>
+                <input asp-for="Proovedor.Contacto" class="form-control" />
+                <span asp-validation-for="Proovedor.Contacto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proovedor.Telefono" class="control-label"></label>
+                <input asp-for="Proovedor.Telefono" class="form-control" />
+                <span asp-validation-for="Proovedor.Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proovedor.Email" class="control-label"></label>
+                <input asp-for="Proovedor.Email" class="form-control" />
+                <span asp-validation-for="Proovedor.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proovedor.Direccion" class="control-label"></label>
+                <input asp-for="Proovedor.Direccion" class="form-control" />
+                <span asp-validation-for="Proovedor.Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

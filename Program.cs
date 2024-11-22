@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using RestoStockDB1.Data;
+
 namespace RestoStockDB1
 {
     public class Program
@@ -8,6 +11,10 @@ namespace RestoStockDB1
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            // Agregando el contexto SupermarketContext a la aplicación
+            builder.Services.AddDbContext<RestoStockContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RestauranteStock")));
 
             var app = builder.Build();
 
