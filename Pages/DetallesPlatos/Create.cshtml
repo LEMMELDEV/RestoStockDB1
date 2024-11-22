@@ -1,0 +1,45 @@
+﻿@page
+@model RestoStockDB1.Pages.DetallesPlatos.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Detalle Plato</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="DetallePlato.PlatoId" class="control-label"></label>
+                <select asp-for="DetallePlato.PlatoId" class="form-control" asp-items="ViewBag.Platos">
+                    <option value="">Select a Plato</option>
+                </select>
+                <span asp-validation-for="DetallePlato.PlatoId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DetallePlato.ingredienteId" class="control-label"></label>
+                <select asp-for="DetallePlato.ingredienteId" class="form-control" asp-items="ViewBag.Ingredientes">
+                    <option value="">Select an Ingrediente</option>
+                </select>
+                <span asp-validation-for="DetallePlato.ingredienteId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DetallePlato.Cantidad" class="control-label"></label>
+                <input asp-for="DetallePlato.Cantidad" class="form-control" />
+                <span asp-validation-for="DetallePlato.Cantidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a asp-page="Index" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
