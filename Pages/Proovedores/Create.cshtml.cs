@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RestoStockDB1.Data;
 using RestoStockDB1.Models;
 
-namespace Proovedores
+namespace RestoStockDB1.Pages.Proovedores
 {
     public class CreateModel : PageModel
     {
@@ -20,17 +20,16 @@ namespace Proovedores
         }
 
         [BindProperty]
-        public Proovedor Proovedores
-        { get; set; } = default!;
+        public Proovedor Proovedor { get; set; } = default!;
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.Proovedores == null || Proovedores == null)
+            if (!ModelState.IsValid || _context.Proovedores == null || Proovedor == null)
             {
-                // return Page();
+                return Page();
             }
 
-            _context.Proovedores.Add(Proovedores);
+            _context.Proovedores.Add(Proovedor);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

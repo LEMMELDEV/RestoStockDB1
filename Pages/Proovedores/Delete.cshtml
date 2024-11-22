@@ -1,14 +1,13 @@
 ﻿@page
-@model RestoStockDB.Pages.Proovedores.DeleteModel
-
+@model RestoStockDB1.Pages.Proovedores.DeleteModel
 @{
-    ViewData["Title"] = "ELIMINAR PROOVEDOR";
+    ViewData["Title"] = "Delete";
 }
 
 <h1>Eliminar</h1>
 <h3>¿Estas seguro que deseas ELIMINAR?</h3>
 <div>
-    <h4>Proovedor</h4>
+    <h4>Proveedor</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -42,7 +41,6 @@
             @Html.DisplayFor(model => model.Proovedor.Direccion)
         </dd>
     </dl>
-
     <form method="post">
         <input type="hidden" asp-for="Proovedor.ProovedorId" />
         <input type="submit" value="Eliminar" class="btn btn-danger" />
