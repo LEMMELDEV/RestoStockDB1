@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using RestoStockDB1.Data;
 using RestoStockDB1.Models;
 
-namespace Proovedores
+namespace Platos
 {
     //[Authorize]
     public class IndexModel : PageModel
@@ -17,15 +17,14 @@ namespace Proovedores
             _context = context;
         }
 
-        public IList<Proovedor> Proovedores { get; set; } = default!;
+        public IList<Plato> Platos { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Proovedores != null)
+            if (_context.Platos != null)
             {
-                Proovedores = await _context.Proovedores.ToListAsync();
+                Platos = await _context.Platos.ToListAsync();
             }
         }
     }
 }
-

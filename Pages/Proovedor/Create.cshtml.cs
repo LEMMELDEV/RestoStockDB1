@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RestoStockDB1.Data;
 using RestoStockDB1.Models;
 
-namespace RestoStockDB.Pages.Proovedores
+namespace Proovedores
 {
     public class CreateModel : PageModel
     {
