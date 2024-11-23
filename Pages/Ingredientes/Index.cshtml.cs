@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RestoStockDB1.Models;
 using RestoStockDB1.Data;
-using Microsoft.AspNetCore.Authorization;
 
 namespace RestoStockDB1.Pages.Ingredientes
 {
