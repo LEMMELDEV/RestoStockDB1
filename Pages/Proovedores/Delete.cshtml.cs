@@ -15,23 +15,28 @@ namespace RestoStockDB1.Pages.Proovedores
         }
         [BindProperty]
         public Proovedor Proovedor { get; set; } = default!;
+
+
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Proovedores == null)
             {
                 return NotFound();
             }
-            var proovedores = await _context.Proovedores.FirstOrDefaultAsync(m => m.ProovedorId == id);
-            if (proovedores == null)
+
+            var proovedor = await _context.Proovedores.FirstOrDefaultAsync(m => m.ProovedorId == id);
+            if (proovedor == null)
             {
                 return NotFound();
             }
-            else
-            {
-                proovedores = proovedores;
-                return Page();
-            }
+
+            Proovedor = proovedor; // Asigna el objeto encontrado a la propiedad Proovedor
+            return Page();
         }
+
+
+
         public async Task<IActionResult> OnPostAsync(int? id)
         {
             // Verifica si el id es nulo o si el contexto de proveedores es nulo.

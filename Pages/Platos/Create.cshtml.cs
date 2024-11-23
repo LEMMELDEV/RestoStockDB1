@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RestoStockDB1.Data; 
+using RestoStockDB1.Data;
 using RestoStockDB1.Models;
 
-namespace RestoStockDB1.Pages.Ingredientes
+namespace RestoStockDB1.Pages.Platos
 {
     public class CreateModel : PageModel
     {
@@ -20,16 +20,16 @@ namespace RestoStockDB1.Pages.Ingredientes
         }
 
         [BindProperty]
-        public Ingrediente Ingrediente { get; set; } = default!;
+        public Plato Plato { get; set; } = default!;
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.Ingredientes == null || Ingrediente == null)
+            if (!ModelState.IsValid || _context.Platos == null || Plato == null)
             {
                 return Page();
             }
 
-            _context.Ingredientes.Add(Ingrediente);
+            _context.Platos.Add(Plato);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

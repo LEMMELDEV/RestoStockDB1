@@ -1,11 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RestoStockDB1.Models;
 using RestoStockDB1.Data;
 
-namespace RestoStockDB1.Pages.Ingredientes
+namespace RestoStockDB1.Pages.Platos
 {
+    //[Authorize]
     public class IndexModel : PageModel
     {
         private readonly RestoStockContext _context;
@@ -15,13 +17,13 @@ namespace RestoStockDB1.Pages.Ingredientes
             _context = context;
         }
 
-        public IList<Ingrediente> Ingredientes { get; set; } = default!;
+        public IList<Plato> Platos { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Ingredientes != null)
+            if (_context.Platos != null)
             {
-                Ingredientes = await _context.Ingredientes.ToListAsync();
+                Platos = await _context.Platos.ToListAsync();
             }
         }
     }
