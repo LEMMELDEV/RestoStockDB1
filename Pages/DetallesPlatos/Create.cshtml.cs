@@ -29,20 +29,11 @@ namespace RestoStockDB1.Pages.DetallesPlatos
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || _context.DetallesPlatos == null || DetallePlato == null)
             {
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
-
-                ViewData["Platos"] = new SelectList(_context.Platos, "PlatoId", "Nombre");
-                ViewData["Ingredientes"] = new SelectList(_context.Ingredientes, "IngredienteId", "Nombre");
-                return Page();
+                //return Page();
             }
 
-
-            // Agregar el nuevo detalle a la base de datos
             _context.DetallesPlatos.Add(DetallePlato);
             await _context.SaveChangesAsync();
 

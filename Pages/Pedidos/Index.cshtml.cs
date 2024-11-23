@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using RestoStockDB1.Models;
 using RestoStockDB1.Data;
+using RestoStockDB1.Models;
 
 namespace RestoStockDB1.Pages.Pedidos
 {
@@ -15,17 +14,15 @@ namespace RestoStockDB1.Pages.Pedidos
             _context = context;
         }
 
-        public IList<Pedido> Pedidos { get; set; } = default!;
+        public IList<Pedido> Pedidos { get; set; } = new List<Pedido>();
 
         public async Task OnGetAsync()
         {
-            if (_context.Pedidos != null)
-            {
-                // Obtiene la lista de pedidos, incluyendo el proveedor, si es necesario
-                Pedidos = await _context.Pedidos
-                    .Include(p => p.Proovedor) // Incluye los proveedores asociados a los pedidos
-                    .ToListAsync();
-            }
+            // Incluir la relación con el proveedor para acceder a NombreEmpresa
+            Pedidos = await _context.Pedidos
+                .Include(p => p.Proovedor)
+                .ToListAsync();
         }
     }
 }
+

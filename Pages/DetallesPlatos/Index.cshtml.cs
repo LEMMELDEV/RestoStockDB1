@@ -21,10 +21,10 @@ namespace RestoStockDB1.Pages.DetallesPlatos
 
         public async Task OnGetAsync()
         {
-            if (_context.DetallesPlatos != null)
-            {
-                DetallesPlatos = await _context.DetallesPlatos.ToListAsync();
-            }
+            DetallesPlatos = await _context.DetallesPlatos
+            .Include(d => d.Plato) // Cargar nombres de Plato
+            .Include(d => d.Ingrediente) // Cargar nombres de Ingrediente
+            .ToListAsync();
         }
     }
 }

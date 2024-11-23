@@ -13,10 +13,8 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <!-- Campo oculto para el ID del pedido -->
             <input type="hidden" asp-for="Pedido.PedidoId" />
 
-            <!-- Campo para seleccionar el proveedor -->
             <div class="form-group">
                 <label asp-for="Pedido.ProovedorId" class="control-label"></label>
                 <select asp-for="Pedido.ProovedorId" class="form-control" asp-items="Model.ProovedoresSelectList">
@@ -25,31 +23,26 @@
                 <span asp-validation-for="Pedido.ProovedorId" class="text-danger"></span>
             </div>
 
-            <!-- Campo para la fecha del pedido -->
             <div class="form-group">
                 <label asp-for="Pedido.FechaPedido" class="control-label"></label>
-                <input asp-for="Pedido.FechaPedido" class="form-control" />
+                <input asp-for="Pedido.FechaPedido" type="date" class="form-control" />
                 <span asp-validation-for="Pedido.FechaPedido" class="text-danger"></span>
             </div>
 
-            <!-- Campo para el total -->
             <div class="form-group">
                 <label asp-for="Pedido.Total" class="control-label"></label>
-                <input asp-for="Pedido.Total" class="form-control" />
+                <input asp-for="Pedido.Total" type="number" step="0.01" class="form-control" />
                 <span asp-validation-for="Pedido.Total" class="text-danger"></span>
             </div>
 
-            <!-- Botones de guardar y cancelar -->
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-success" />
-                <a asp-page="./Index" class="btn btn-primary">Volver a la lista</a>
+            <div class="form-group mt-3">
+                <input type="submit" value="Crear" class="btn btn-success" />
+                <a asp-page="Index" class="btn btn-primary">Volver a la Lista</a>
             </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_LoginStatusPartial");
-    }
+    <partial name="_LoginStatusPartial" />
 }
