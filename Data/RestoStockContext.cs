@@ -5,11 +5,19 @@ namespace RestoStockDB1.Data
 {
     public class RestoStockContext : DbContext
     {
+
+        // Constructor que recibe DbContextOptions
+        public RestoStockContext(DbContextOptions<RestoStockContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<DetallePlato> DetallesPlatos { get; set; }
         public DbSet<Ingrediente> Ingredientes { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Proovedor> Proovedores { get; set; }
         public DbSet<Plato> Platos { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
