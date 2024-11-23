@@ -12,6 +12,12 @@ namespace RestoStockDB1
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+            builder.Services.AddAuthentication().AddCookie("MyCookieAuth", options =>
+            {
+                options.Cookie.Name = "MyCookieAuth";
+                options.LoginPath = "/Account/Login";
+            });
+
             // Agregando el contexto SupermarketContext a la aplicación
             builder.Services.AddDbContext<RestoStockContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RestauranteStock")));
@@ -31,6 +37,7 @@ namespace RestoStockDB1
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapRazorPages();

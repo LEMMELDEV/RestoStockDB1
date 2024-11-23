@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RestoStockDB1.Models;
@@ -6,6 +6,7 @@ using RestoStockDB1.Data;
 
 namespace RestoStockDB1.Pages.Ingredientes
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly RestoStockContext _context;
