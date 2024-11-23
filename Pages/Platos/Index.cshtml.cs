@@ -7,7 +7,7 @@ using RestoStockDB1.Data;
 
 namespace RestoStockDB1.Pages.Platos
 {
-    //[Authorize]
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly RestoStockContext _context;
