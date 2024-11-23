@@ -1,0 +1,39 @@
+﻿@page
+@model RestoStockDB1.Pages.Pedidos.DeleteModel
+@{
+    ViewData["Title"] = "Eliminar Pedido";
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Está seguro de que desea eliminar este registro?</h3>
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pedido.Proovedor.NombreEmpresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pedido.Proovedor.NombreEmpresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pedido.FechaPedido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pedido.FechaPedido)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pedido.Total)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pedido.Total)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Pedido.PedidoId" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-page="./Index" class="btn btn-primary">Volver a la Lista</a>
+    </form>
+</div>
