@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestoStockDB1.Data;
 
@@ -11,9 +12,11 @@ using RestoStockDB1.Data;
 namespace RestoStockDB1.Migrations
 {
     [DbContext(typeof(RestoStockContext))]
-    partial class RestoStockContextModelSnapshot : ModelSnapshot
+    [Migration("20241123004955_UpdateDatabase")]
+    partial class UpdateDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
