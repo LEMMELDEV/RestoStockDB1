@@ -26,7 +26,7 @@ namespace RestoStockDB1.Pages.Pedidos
         {
             if (!ModelState.IsValid || _context.Pedidos == null || Pedido == null)
             {
-                return Page();
+                //return Page();
             }
 
             _context.Pedidos.Add(Pedido);

@@ -16,76 +16,66 @@ namespace RestoStockDB1.Pages.Pedidos
             _context = context;
         }
 
-        // Propiedad BindProperty para vincular el Pedido a la vista
         [BindProperty]
         public Pedido Pedido { get; set; } = default!;
 
-        // Método GET para cargar los datos de un Pedido específico
+        // Propiedad para almacenar la lista de proveedores
+        public SelectList ProovedoresSelectList { get; set; } = default!;
+
+        // Cargar los proveedores para el select
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            // Verifica que el id no sea nulo y que la tabla Pedidos no esté vacía
-            if (id == 0 || _context.Pedidos == null)
-            {
-                return NotFound(); // Si no existe el id, retorna error 404
-            }
-
-            // Obtiene el pedido de la base de datos, incluyendo la relación con el proveedor
+            // Obtener el pedido junto con su proveedor
             var pedido = await _context.Pedidos
                 .Include(p => p.Proovedor)
-                .FirstOrDefaultAsync(m => m.PedidoId == id);
+                .FirstOrDefaultAsync(p => p.PedidoId == id);
 
-            // Si no se encuentra el pedido, retorna error 404
+            // Si no se encuentra el pedido, devolver un error 404
             if (pedido == null)
             {
                 return NotFound();
             }
 
-            // Asigna el pedido encontrado a la propiedad BindProperty
+            // Cargar los proveedores para el dropdown de selección
+            ProovedoresSelectList = new SelectList(await _context.Proovedores.ToListAsync(), "ProovedorId", "NombreEmpresa");
+
+            // Asignar el pedido al modelo de la vista
             Pedido = pedido;
-
-            // Carga las listas desplegables de Proveedores para la vista
-            ViewData["Proveedores"] = new SelectList(await _context.Proovedores.ToListAsync(), "ProovedorId", "Nombre");
-
-            return Page(); // Retorna la página con los datos cargados
+            return Page();
         }
 
-        // Método POST para guardar los cambios realizados en el pedido
+        // Guardar los cambios del pedido
         public async Task<IActionResult> OnPostAsync()
         {
-            // Verifica si el modelo es válido
             if (!ModelState.IsValid)
             {
-                // Si el modelo no es válido, recarga las listas desplegables de Proveedores
-                ViewData["Proveedores"] = new SelectList(await _context.Proovedores.ToListAsync(), "ProovedorId", "Nombre");
-                return Page(); // Retorna la página con los datos sin cambios
+                // Recargar los proveedores para el dropdown si el modelo no es válido
+                ProovedoresSelectList = new SelectList(await _context.Proovedores.ToListAsync(), "ProovedorId", "NombreEmpresa");
+                return Page();
             }
 
-            // Marca el Pedido como modificado para que se guarde en la base de datos
             _context.Attach(Pedido).State = EntityState.Modified;
 
             try
             {
-                // Intenta guardar los cambios realizados
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                // En caso de error por concurrencia
                 if (!PedidoExists(Pedido.PedidoId))
                 {
-                    return NotFound(); // Si no existe el pedido, retorna error 404
+                    return NotFound();
                 }
                 else
                 {
-                    throw; // Si no es un error de concurrencia, lanza la excepción
+                    throw;
                 }
             }
 
-            // Si la edición fue exitosa, redirige al listado de pedidos
             return RedirectToPage("./Index");
         }
 
-        // Método privado para verificar si el Pedido existe en la base de datos
+        // Verificar si el pedido existe
         private bool PedidoExists(int id)
         {
             return (_context.Pedidos?.Any(e => e.PedidoId == id)).GetValueOrDefault();
