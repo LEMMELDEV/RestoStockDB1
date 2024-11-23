@@ -1,4 +1,54 @@
 ﻿@page
 @model RestoStockDB1.Pages.Pedidos.IndexModel
 @{
+    ViewData["Title"] = "Listado de Pedidos";
 }
+
+<h1>LISTADO DE PEDIDOS</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">CREAR NUEVO PEDIDO</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pedidos[0].PedidoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pedidos[0].Proovedor.NombreEmpresa) <!-- Cambiado a NombreEmpresa -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pedidos[0].FechaPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pedidos[0].Total)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Pedidos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PedidoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proovedor.NombreEmpresa) <!-- Cambiado a NombreEmpresa -->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaPedido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.PedidoId" class="btn btn-warning">Editar</a>
+                    <a asp-page="./Delete" asp-route-id="@item.PedidoId" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
