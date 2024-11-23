@@ -8,6 +8,6 @@
         public string? Descripcion { get; set; }
 
         // Relación muchos-a-muchos con Ingrediente a través de DetallePlato
-        public ICollection<DetallePlato> DetallesPlatos { get; set; }
+        public ICollection<DetallePlato>? DetallesPlatos { get; set; } = default!;
     }
 }
