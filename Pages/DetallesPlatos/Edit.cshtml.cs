@@ -50,9 +50,7 @@ namespace RestoStockDB1.Pages.DetallesPlatos
         {
             if (!ModelState.IsValid)
             {
-                Platos = new SelectList(await _context.Platos.ToListAsync(), "PlatoId", "Nombre", DetallePlato.PlatoId);
-                Ingredientes = new SelectList(await _context.Ingredientes.ToListAsync(), "IngredienteId", "Nombre", DetallePlato.IngredienteId);
-                return Page();
+                //return Page();
             }
 
             _context.DetallesPlatos.Update(DetallePlato);

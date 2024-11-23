@@ -40,8 +40,7 @@ namespace RestoStockDB1.Pages.Pedidos
         {
             if (!ModelState.IsValid)
             {
-                ProovedoresSelectList = new SelectList(await _context.Proovedores.ToListAsync(), "ProovedorId", "NombreEmpresa");
-                return Page();
+                //return Page();
             }
 
             _context.Attach(Pedido).State = EntityState.Modified;
