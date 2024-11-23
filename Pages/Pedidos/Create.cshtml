@@ -1,0 +1,45 @@
+﻿@page
+@model RestoStockDB1.Pages.Pedidos.CreateModel
+@{
+    ViewData["Title"] = "Crear Pedido";
+}
+
+<h1>Crear Pedido</h1>
+
+<h4>Pedido</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Pedido.ProovedorId" class="control-label"></label>
+                <input asp-for="Pedido.ProovedorId" type="number" class="form-control" />
+                <span asp-validation-for="Pedido.ProovedorId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Pedido.FechaPedido" class="control-label"></label>
+                <input asp-for="Pedido.FechaPedido" type="date" class="form-control" />
+                <span asp-validation-for="Pedido.FechaPedido" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Pedido.Total" class="control-label"></label>
+                <input asp-for="Pedido.Total" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="Pedido.Total" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Crear" class="btn btn-success" />
+                <a asp-page="Index" class="btn btn-primary">Volver a la Lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

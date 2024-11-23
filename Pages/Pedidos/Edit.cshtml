@@ -1,0 +1,55 @@
+﻿@page
+@model RestoStockDB1.Pages.Pedidos.EditModel
+@{
+    ViewData["Title"] = "Editar Pedido";
+}
+
+<h1>Editar Pedido</h1>
+
+<h4>Pedido</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Campo oculto para el ID del pedido -->
+            <input type="hidden" asp-for="Pedido.PedidoId" />
+
+            <!-- Campo para seleccionar el proveedor -->
+            <div class="form-group">
+                <label asp-for="Pedido.ProovedorId" class="control-label"></label>
+                <select asp-for="Pedido.ProovedorId" class="form-control" asp-items="Model.ProovedoresSelectList">
+                    <option value="">Seleccione un Proveedor</option>
+                </select>
+                <span asp-validation-for="Pedido.ProovedorId" class="text-danger"></span>
+            </div>
+
+            <!-- Campo para la fecha del pedido -->
+            <div class="form-group">
+                <label asp-for="Pedido.FechaPedido" class="control-label"></label>
+                <input asp-for="Pedido.FechaPedido" class="form-control" />
+                <span asp-validation-for="Pedido.FechaPedido" class="text-danger"></span>
+            </div>
+
+            <!-- Campo para el total -->
+            <div class="form-group">
+                <label asp-for="Pedido.Total" class="control-label"></label>
+                <input asp-for="Pedido.Total" class="form-control" />
+                <span asp-validation-for="Pedido.Total" class="text-danger"></span>
+            </div>
+
+            <!-- Botones de guardar y cancelar -->
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+                <a asp-page="./Index" class="btn btn-primary">Volver a la lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
