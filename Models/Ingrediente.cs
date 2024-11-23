@@ -9,6 +9,6 @@
         public decimal PrecioUnitario { get; set; }
 
         // Relación muchos-a-muchos con Plato a través de DetallePlato
-        public ICollection<DetallePlato> DetallesPlatos { get; set; }
+        public ICollection<DetallePlato>? DetallesPlatos { get; set; } = default!;
     }
 }
