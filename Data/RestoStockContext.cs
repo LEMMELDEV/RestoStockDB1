@@ -17,6 +17,7 @@ namespace RestoStockDB1.Data
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Proovedor> Proovedores { get; set; }
         public DbSet<Plato> Platos { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
