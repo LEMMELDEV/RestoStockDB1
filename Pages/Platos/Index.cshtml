@@ -1,0 +1,51 @@
+﻿@page
+@model RestoStockDB1.Pages.Platos.IndexModel
+
+@{
+    ViewData["Title"] = "Index PLATOS";
+}
+
+<h1>PLATOS</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">CREAR NUEVO</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Platos[0].Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Platos[0].PrecioVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Platos[0].Descripcion)
+            </th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Platos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.PlatoId" class="btn btn-warning">Editar</a>
+                    <a asp-page="./Delete" asp-route-id="@item.PlatoId" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
